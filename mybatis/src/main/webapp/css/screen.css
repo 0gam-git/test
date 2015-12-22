@@ -1,0 +1,64 @@
+/**********************************
+
+Use: Main Screen Import
+
+***********************************/
+
+
+#join-box {
+	width: 14%;
+	padding: 20px;
+	margin: 100px auto;
+	background: #fff;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border: 1px solid #000;
+}
+
+#login-box {
+	width: 14%;
+	padding: 20px;
+	margin: 100px auto;
+	background: #fff;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border: 1px solid #000;
+}
+
+#wrtieTable, #updateTable {
+	width: 40%;
+	padding: 5px;
+	margin: 30px auto;
+	background: #fff;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border: 1px solid #000;
+}
+
+#listTable {
+	width: 40%;
+	padding: 5px;
+	margin: 30px auto;
+	text-align: center;
+	background: #fff;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border: 1px solid #000;
+}
+
+#searchTable {
+	padding: 5px;
+	margin: 30px auto;
+	background: #fff;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+}
+
+/* style="width:200px" text-ailgn:"center" */
+
+
+
+@import "reset.css";
+@import "core.css";
+@import "cmxformTemplate.css";
+@import "cmxform.css";

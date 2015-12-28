@@ -88,7 +88,6 @@ public class BoardController {
 
 	@RequestMapping(value = "update.do")
 	private String update(BoardVo vo) {
-		// @ModelAttribute를 사용하지 않고 모델만 던져도 가능하다. 이름 줄이는 용도인듯
 		sqlSession.update("userControlMapper.update", vo);
 
 		return "success";
@@ -96,7 +95,6 @@ public class BoardController {
 
 	@RequestMapping(value = "insertForm.do")
 	private String insertForm() {
-		// 사용자 아이디 세션에서 가져와야함
 
 		return "write";
 	}
@@ -192,7 +190,7 @@ public class BoardController {
 		String id = member.getId();
 		Object duplicateId = sqlSession.selectOne("userControlMapper.selectDuplicateId", id);
 
-		if (!duplicateId.equals("") || duplicateId != null) { // 중복 pk 체크
+		if (!duplicateId.equals("") || duplicateId != null) { 
 			mav.setViewName("joinFaild");
 			return mav;
 		}
@@ -204,7 +202,7 @@ public class BoardController {
 		return mav;
 	}
 
-	@RequestMapping(value = "check_id.do") // 아이디 중복 체크
+	@RequestMapping(value = "check_id.do") 
 	private void checkId(@RequestParam("id") String id, HttpServletResponse res) throws IOException {
 		int idLength = id.length();
 		if (idLength > 5) {
@@ -228,7 +226,7 @@ public class BoardController {
 	@RequestMapping(value = "cookie.do")
 	private ModelAndView cookieTest() {
 		ModelAndView mav = new ModelAndView();
-		// 쿠키 사용하기
+		
 		Cookie cookie = new Cookie("1", "값");
 		mav.addObject(cookie);
 
@@ -248,6 +246,6 @@ public class BoardController {
 		return mav;
 	}
 
-	// @ExceptionHandler(//익셉션 명) 단일 에러만 잡는.
+	// @ExceptionHandler(익셉션 명) 단일 에러만 잡는.
 
 }

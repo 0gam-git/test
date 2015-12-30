@@ -1,20 +1,26 @@
 package com.urong.mybatis.controller;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.session.SqlSession;
+import org.codehaus.jackson.map.util.JSONPObject;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.urong.mybatis.model.Login;
 import com.urong.mybatis.model.Member;
@@ -26,7 +32,8 @@ public class BoardController {
 
 	static final int contentLenth = 10;
 	@Autowired
-	@Qualifier("sql")
+//	@Qualifier(value="sqlSession")
+	@Resource(name="sql")
 	private SqlSession sqlSession;
 
 	@RequestMapping(value = "list.do")
@@ -39,8 +46,8 @@ public class BoardController {
 
 		int rowCount = getTotalCount();
 		int viewPageNumber = (rowCount / contentLenth);
-		boolean modflag = (rowCount % contentLenth) == 0 ? true : false;
-		viewPageNumber = modflag ? viewPageNumber : viewPageNumber + 1;
+		boolean modFlag = (rowCount % contentLenth) == 0 ? true : false;
+		viewPageNumber = modFlag ? viewPageNumber : viewPageNumber + 1;
 
 		List<BoardVo> outputs = 
 				sqlSession.selectList("userControlMapper.selectLimitCount", pageNum);
@@ -247,5 +254,40 @@ public class BoardController {
 	}
 
 	// @ExceptionHandler(익셉션 명) 단일 에러만 잡는.
+	@RequestMapping(value="auto.do")
+	private String autoComplete(){
+		
+		return "autoCompleteTest";
+	}
+	
+	@RequestMapping(value="testJackson.do")
+	private @ResponseBody Map<?,?> testJackson(ModelMap modelMap){
 
+		List<BoardVo> outputs =
+				sqlSession.selectList("userControlMapper.select");
+		
+		JSONObject object = new JSONObject();
+		
+		for (BoardVo boardVo : outputs) {
+			object.put("idx", boardVo.getIdx());
+			object.put("content", boardVo.getContent());
+			object.put("date", boardVo.getRegdate());
+			object.put("title", boardVo.getTitle());
+			object.put("writer", boardVo.getWriter());
+		}
+		
+		try{
+			FileWriter fw = new FileWriter("C:/Users/june/Desktop/test.json");
+			fw.write(object.toJSONString());
+			fw.flush();
+			fw.close();
+			
+		}catch (IOException ex){
+			ex.printStackTrace();
+		}
+			System.out.println(object);
+		
+		return modelMap; 
+	}
+	
 }

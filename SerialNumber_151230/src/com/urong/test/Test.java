@@ -7,6 +7,7 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.security.Timestamp;
 import java.util.Calendar;
+import java.util.Enumeration;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.UUID;
@@ -51,9 +52,7 @@ public class Test {
 
 	public static void main(String[] args) throws IOException {
 		/*
-		 * // UUID(Universally unique identifier) String randomUUID =
-		 * UUID.randomUUID().toString().toUpperCase(); System.out.println(
-		 * "randomUUID = " + randomUUID);
+		 * // UUID(Universally unique identifier) 
 		 * 
 		 * // UUID formString = UUID.fromString(randomUUID); UUID formString =
 		 * UUID.fromString("9CDDCB43-1A7C-4838-B1CA-B4BB039979EC");
@@ -64,7 +63,10 @@ public class Test {
 		 * UUID.nameUUIDFromBytes(array); System.out.println(
 		 * "nameUUIDFromBytes = " + nameUUIDFromBytes);
 		 */
-
+		
+		String randomUUID = UUID.randomUUID().toString().toUpperCase();
+		System.out.println("randomUUID = " + randomUUID);
+		
 		// --------- timeStamp + id + randomCharacter --------
 		Test test = new Test();
 		System.out.println(test.createSerialNumber());

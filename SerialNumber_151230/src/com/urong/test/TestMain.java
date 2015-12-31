@@ -12,9 +12,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.UUID;
 
-public class Test {
-	static final int size = 5;
-
+public class TestMain {
+	int size = 5;
+	
 	private int getRandomNumber() {
 		int number = new Random().nextInt(10);
 
@@ -28,8 +28,13 @@ public class Test {
 		return c.toString();
 	}
 
-	private String getId() throws UnknownHostException {
-		return InetAddress.getLocalHost().getHostName();
+	private String getId() {
+		try {
+			return InetAddress.getLocalHost().getHostName();
+		} catch (UnknownHostException e) {
+			System.out.println(e.getMessage());
+			return "unKnownHostName";
+		}
 	}
 
 	private String getTimeStamp() {
@@ -51,9 +56,8 @@ public class Test {
 	}
 
 	public static void main(String[] args) throws IOException {
+		// UUID(Universally unique identifier)
 		/*
-		 * // UUID(Universally unique identifier) 
-		 * 
 		 * // UUID formString = UUID.fromString(randomUUID); UUID formString =
 		 * UUID.fromString("9CDDCB43-1A7C-4838-B1CA-B4BB039979EC");
 		 * System.out.println("formString = " +
@@ -63,12 +67,12 @@ public class Test {
 		 * UUID.nameUUIDFromBytes(array); System.out.println(
 		 * "nameUUIDFromBytes = " + nameUUIDFromBytes);
 		 */
-		
+
 		String randomUUID = UUID.randomUUID().toString().toUpperCase();
 		System.out.println("randomUUID = " + randomUUID);
-		
-		// --------- timeStamp + id + randomCharacter --------
-		Test test = new Test();
+
+		// --------- timeStamp + id(hostName) + randomCharacter --------
+		TestMain test = new TestMain();
 		System.out.println(test.createSerialNumber());
 	}
 }

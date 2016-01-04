@@ -13,7 +13,7 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class TestMain {
-	int size = 5;
+	static final int size = 5;
 	
 	private int getRandomNumber() {
 		int number = new Random().nextInt(10);

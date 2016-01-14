@@ -13,12 +13,12 @@
 
 	<h1 style="text-align: center"> 리스트 폼 </h1>
 	
-	<c:if test="${empty sessionScope.loginId}">
+<%-- 	<c:if test="${empty sessionScope.loginId}">
 	<script type="text/javascript">
 		alert("로그인 상태가 아니시네요. 로그인해주세요.");
 		location.href ="login.do";
 	</script>
-	</c:if>
+	</c:if> --%>
 	
 	<div style="text-align: right; margin-right: 30%;">
 		<h5> ${loginId} 님 <br><a href="logout.do">로그아웃</a></h5>

@@ -41,7 +41,7 @@ public class TestMain {
 		Calendar calendar = Calendar.getInstance();
 		String timeStamp = String.valueOf(calendar.getTimeInMillis() / 1000);
 
-		return timeStamp;
+		return timeStamp; 
 	}
 
 	private StringBuilder createSerialNumber() throws UnknownHostException {

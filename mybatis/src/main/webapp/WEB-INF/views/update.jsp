@@ -11,12 +11,12 @@
 </head>
 <body>
 
-	<c:if test="${empty sessionScope.loginId}">
+<%-- 	<c:if test="${empty sessionScope.loginId}">
 		<script type="text/javascript">
 			alert("로그인 상태가 아니시네요. 로그인해주세요.");
 			location.href = "login.do";
 		</script>
-	</c:if>
+	</c:if> --%>
 
 	<h1 style="text-align: center">글 보기</h1>
 	<div style="text-align: right; margin-right: 30%;">

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
-import org.codehaus.jackson.map.util.JSONPObject;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -181,7 +180,7 @@ public class BoardController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/join.do")
+	@RequestMapping(value = "join.do")
 	private ModelAndView vaildCheckTest() {
 		ModelAndView mav = new ModelAndView();
 

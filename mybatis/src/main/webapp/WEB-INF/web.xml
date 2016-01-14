@@ -17,14 +17,17 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>application</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml
+			/WEB-INF/spring/appServlet/interceptor-context.xml
+			
+			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -32,7 +35,7 @@
 		<servlet-name>application</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>secondApplication</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -45,7 +48,7 @@
 		<servlet-name>secondApplication</servlet-name>
 		<url-pattern>/second/*</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- 필터 -->
 	<filter>
 		<filter-name>encoding</filter-name>
@@ -60,7 +63,7 @@
 		<filter-name>encoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<!-- spring security -->
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>

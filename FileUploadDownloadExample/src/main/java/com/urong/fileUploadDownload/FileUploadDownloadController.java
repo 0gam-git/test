@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,14 +35,12 @@ public class FileUploadDownloadController implements ApplicationContextAware {
 		return mav;
 	}
 
-	@RequestMapping(value = "upload.do")
-	private ModelAndView writeFile(MultipartFileModel model) {
-		ModelAndView mav = new ModelAndView();
+	@RequestMapping(value = "fileUpload.do")
+	private @ResponseBody String writeFile(MultipartFileModel model) {
 
 		MultipartFile multipartfile = model.getFile();
 		OutputStream out = null;
 		try {
-
 			System.out.println("save path : " + context.getServletContext().getRealPath(""));
 			System.out.println("file upload : " + multipartfile.getName());
 			System.out.println("file upload : " + multipartfile.getOriginalFilename());
@@ -60,10 +59,8 @@ public class FileUploadDownloadController implements ApplicationContextAware {
 		} finally {
 			IOUtils.closeQuietly(out);
 		}
-		mav.setViewName("uploadSuccess");
-		mav.addObject("fileName", multipartfile.getOriginalFilename());
 
-		return mav;
+		return "uploadSuccess";
 	}
 
 	@RequestMapping("downolad.do")

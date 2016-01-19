@@ -4,24 +4,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class MultipartFileModel {
 
-	private String name;
+	private String description;
 	private MultipartFile file;
-	
-	public MultipartFileModel(String name, MultipartFile file) {
-		this.name = name;
-		this.file = file;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public MultipartFileModel() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public MultipartFile getFile() {
@@ -31,4 +26,10 @@ public class MultipartFileModel {
 	public void setFile(MultipartFile file) {
 		this.file = file;
 	}
+
+	public MultipartFileModel(String description, MultipartFile file) {
+		this.description = description;
+		this.file = file;
+	}
+	
 }

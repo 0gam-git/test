@@ -30,7 +30,8 @@
 		<input type="button" value="upload" id="uploadButton" />
 	</form>
 	<progress value="0" max="100" ></progress>
-	
+	<br/>
+	<br/>
 	<form id="UploadForm2" method="POST" enctype="multipart/form-data">
 		<label>description : </label>
 		<input type="text" name="description" id="description" /> <label>file : </label> 

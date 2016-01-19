@@ -28,8 +28,7 @@ Upload.prototype.fileUpload = function() {
 		processData : false,
 		contentType : false,
 		success : function(response) {
-
-			$yourDomElement.find('progress').attr({
+			$('progress').attr({
 				value : 100,
 				max : 100
 			});

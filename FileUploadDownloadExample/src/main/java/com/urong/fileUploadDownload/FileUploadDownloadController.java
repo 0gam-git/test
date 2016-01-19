@@ -37,7 +37,7 @@ public class FileUploadDownloadController implements ApplicationContextAware {
 
 	@RequestMapping(value = "fileUpload.do")
 	private @ResponseBody String writeFile(MultipartFileModel model) {
-
+ 
 		MultipartFile multipartfile = model.getFile();
 		OutputStream out = null;
 		try {

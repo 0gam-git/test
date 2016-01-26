@@ -2,9 +2,9 @@ package com.java.test.Inheritance;
 
 import java.awt.*;
 
-public class InheritanceTest {
+public class PersonAndChildTestMain {
 
-	public InheritanceTest() {
+	public PersonAndChildTestMain() {
 		// TODO Auto-generated constructor stub
 	}
 

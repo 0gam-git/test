@@ -12,10 +12,12 @@ public class LogicTestMain extends InheritanceTest2  implements InheritanceAndIn
 		System.out.println("인터페이스 구현부2, 변경이 많다.");
 	}
 
+//==========================================================
+	
 	@Override
 	public void say() {
 		super.say();
-		System.out.println("상속1");
+//		System.out.println("상속1");
 	}
 	
 	@Override

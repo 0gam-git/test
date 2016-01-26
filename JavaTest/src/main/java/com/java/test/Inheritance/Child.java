@@ -2,11 +2,8 @@ package com.java.test.Inheritance;
 
 public class Child extends Parent {
 
-	private String fieldValue;
-	
 	public Child() {
 		System.out.println("자식클래스.");
-		fieldValue = "123e";
 	}
 
 	public void childSay() {
@@ -15,7 +12,7 @@ public class Child extends Parent {
 	
 	@Override
 	public void override() {
-		System.out.println("오버라이딩, 자식656757657657");
+		System.out.println("오버라이딩, 자식~~~~!!@자식자식!!!");
 	}
 	
 	public void testFunc(){

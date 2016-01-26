@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<script type="text/javascript"
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<title>Create Project</title>
+<script type="text/javascript">
+/*
+	function idcheck() {
+		alert("fg");
+		
+		var pName = document.getElementById("ProjectName").value;
+		var pdecript = document.getElementById("ProjectDecription").value;
+		var pName = document.getElementById("ProjectName").value;
+		var pdecript = document.getElementById("ProjectDecription").value;
+		var queryString = "projectName=" + pName;
+
+		createXhr();
+		xhr.onreadystatechange = callback; 
+		xhr.open("POST", "createProject.do", true);
+		xhr.setRequestHeader("Content-Type",
+				"application/x-www-form-urlencoded");
+		xhr.send(queryString);  
+	}; */
+function testAjax(){
+		var object = new Object();
+		object.projectName = $("#projectName").val();
+		object.projectDecription = $("#projectDecription").val();
+		var json_data = JSON.stringify(object);
+		var test = 'ProjectName=' + $("#projectName").val() + '&ProjectDecription;='+ $("#projectDecription").val();
+		/* 'firstName=' + $("#firstName").val() 
+		+ "&lastName;=" + $("#lastName").val() + "&email;=" + $("#email").val(), */
+	 	$.ajax({
+		    url:"createProject.do",
+		    type:"POST",
+		    data:test,
+		    dataType:"json",
+		    
+		    success:function(data){
+		    	alert("성공"+json_data);
+		    },
+	    	error:function(e){
+	    		alert("실패");
+	    		alert(e.responseText);
+	    	}
+	   	});
+	};
+	
+	function testAjax1(){
+		var object = new Object();
+		object.projectName = $("#projectName").val();
+		object.projectDecription = $("#projectDecription").val();
+		
+	 	$.ajax({
+		    url:"createProject1.do",
+		    type:"POST",
+		    data:JSON.stringify(object),
+		    dataType:"json",
+		    contentType: 'application/json',
+		    mimeType: 'text/html',
+		    
+		    success:function(data){
+		    	if(data == "dd"){
+		    		
+		    		alert("성공" + data);
+		    	}
+		    },
+	    	error:function(e){
+	    		alert("실패");
+	    		alert(e.responseText);
+	    	}
+	   	});
+	};
+	
+</script>
+</head>
+<body>
+	<h1>Create Project</h1>
+	<label for="j_username">Project name</label>:
+	<input type="text" id="projectName" name="projectName" />
+	<br />
+	<label for="j_username">Project Description</label>:
+	<input type="text" id="projectDecription" name="projectDecription" />
+	<br />
+	<input type="button" value="Create" onclick="testAjax();" />
+	<input type="button" value="json" onclick="testAjax1();" />
+
+</body>
+</html>

@@ -50,6 +50,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="searchTitle" resultMap="boardMap">
     	select * from board where title like CONCAT ('%',#{search_value},'%') order by idx desc
     </select>
+
+<!-- 	<update id="createNewTable" parameterType="String">
+		>
+		> CREATE TABLE IF NOT EXISTS #{value} (
+		> id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		> ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		>
+		>
+	</update>  -->
     
     <select id="searchTitleOrContent" resultMap="boardMap">
     	select * from board 

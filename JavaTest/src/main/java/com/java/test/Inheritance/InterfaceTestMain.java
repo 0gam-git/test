@@ -1,4 +1,4 @@
-package com.java.test;
+package com.java.test.Inheritance;
 
 public class InterfaceTestMain implements InterfaceTest{
 
@@ -14,7 +14,7 @@ public class InterfaceTestMain implements InterfaceTest{
 		
 	}
 
-	public void add()  //확장을 통해서 필요한 부분을 공통적으로 쓰고, 변화하는 부분을 그 impl에서 추가해서 사용한다.
+	public void add()  //필요한 부분을 공통적으로 쓰고, 변화하는 부분을 그 impl에서 추가해서 사용한다.
 	{
 		System.out.println("fgfgfg");
 	}

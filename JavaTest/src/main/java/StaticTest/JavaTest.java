@@ -1,4 +1,6 @@
-package com.java.test;
+package StaticTest;
+
+import com.java.test.Inheritance.LogicTestMain;
 
 public class JavaTest extends LogicTestMain{
 	private static int sint = 1;

@@ -1,4 +1,4 @@
-package com.java.test;
+package com.java.test.Inheritance;
 
 import java.awt.*;
 
@@ -17,7 +17,7 @@ public class InheritanceTest {
 		System.out.println("=============");
 		Parent p = new Parent();
 		p.override();
-		c.override();
+		c.testFunc();
 		
 		Parent p1 = new Child();
 		p1.override();

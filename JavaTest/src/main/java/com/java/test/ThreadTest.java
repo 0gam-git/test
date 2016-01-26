@@ -23,6 +23,6 @@ public class ThreadTest extends Thread {
 	}
 
 	public static void main(String[] args) {
-		new ThreadTest(10).start();
+		new ThreadTest(50).start();
 	}
 }

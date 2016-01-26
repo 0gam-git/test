@@ -1,4 +1,4 @@
-package com.java.test;
+package com.java.test.Inheritance;
 
 public class Child extends Parent {
 
@@ -15,11 +15,12 @@ public class Child extends Parent {
 	
 	@Override
 	public void override() {
-		System.out.println("오버라이딩, 자식");
+		System.out.println("오버라이딩, 자식656757657657");
 	}
 	
 	public void testFunc(){
 		System.out.println("super~");
 		super.override();
+		System.out.println("super~");
 	}
 }

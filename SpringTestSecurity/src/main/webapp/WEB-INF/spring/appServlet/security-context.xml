@@ -2,38 +2,36 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:sec="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
 	<sec:http>
-		<sec:csrf disabled="true"/>
+		<sec:csrf disabled="true" />
 		<sec:intercept-url pattern="/*" access="permitAll" />
 		<sec:form-login login-page="/login" default-target-url="/home"
 			login-processing-url="/checkUser" username-parameter="id"
 			password-parameter="password" />
 		<!-- 타겟 : 성공 , 프로세싱 : 폼 액션 -->
-		
+
 
 		<sec:logout logout-success-url="/" logout-url="/logout" />
 	</sec:http>
 
 	<sec:authentication-manager>
 		<sec:authentication-provider ref="provider">
-						
-			<!-- <sec:user-service>
-				<sec:user name="june" password="1234" authorities="ROLE_USER" />
-			</sec:user-service> -->
+
+			<!-- <sec:user-service> <sec:user name="june" password="1234" authorities="ROLE_USER" 
+				/> </sec:user-service> -->
 		</sec:authentication-provider>
 	</sec:authentication-manager>
-	
+
 	<!-- provider 안에 서비스를 넣고, 서비스 안에 user detail을 넣는다. -->
 	<bean id="provider" class="com.urong.security.TestUsertProvider">
 		<property name="userDetailsService" ref="userDetailService"></property>
 	</bean>
-	
-	<bean id="userDetailService" class="com.urong.security.TestUserService">
-		
-	</bean>
-	
-	
+
+	<bean id="userDetailService" class="com.urong.security.TestUserService" />
+
+
+
 </beans>

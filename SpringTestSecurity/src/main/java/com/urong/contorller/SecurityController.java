@@ -21,6 +21,7 @@ public class SecurityController {
 
 	}
 
+	//하나의 컨트롤러로 valid 와 logout을 한번에 한다.
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout) {

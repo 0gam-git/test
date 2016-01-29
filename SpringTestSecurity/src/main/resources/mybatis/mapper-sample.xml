@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="userControlMapper">
+
+	<resultMap id="boardMap" type="com.urong.mybatis.model.BoardVo">
+        <id     property="idx"    		column="idx"/>
+        <result property="writer"       column="writer"/>
+        <result property="title" 		column="title"/>
+        <result property="content" 		column="content"/>
+        <result property="regdate" 		column="regdate"/>
+    </resultMap>
+    
+    <resultMap id="loginMap" type="com.urong.mybatis.model.Login">
+        <id     property="id"    		column="id"/>
+        <result property="password"       column="password"/>
+    </resultMap>
+    
+    <resultMap id="joinMemberMap" type="com.urong.mybatis.model.Member">
+        <id     property="id"    		column="id"/>
+        <result property="password"       column="password"/>
+    	<result property="repassword"       column="repassword"/>
+    	<result property="age"       column="age"/>
+    	<result property="name"       column="name"/>
+    	<result property="email"       column="email"/>
+    	<result property="homepage"       column="homepage"/>
+    </resultMap>
+    
+    <select id ="select" resultMap="boardMap">
+        SELECT * FROM board order by idx desc
+    </select>
+    
+	<select id="selectRowCount" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<select id="selectLimitCount" resultMap="boardMap">
+		select * from board order by idx desc LIMIT 10 OFFSET #{page}
+	</select>
+	
+    <select id="selectOne" resultMap="boardMap">
+    	select * from board where idx = #{idx}
+    </select>
+    
+    <select id="searchWriter" resultMap="boardMap">  <!--  CONCAT('%',#{search_value},'%') -->
+    	select * from board where writer like CONCAT ('%',#{search_value},'%') order by idx desc
+    </select>
+    
+    <select id="searchTitle" resultMap="boardMap">
+    	select * from board where title like CONCAT ('%',#{search_value},'%') order by idx desc
+    </select>
+
+<!-- 	<update id="createNewTable" parameterType="String">
+		>
+		> CREATE TABLE IF NOT EXISTS #{value} (
+		> id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		> ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		>
+		>
+	</update>  -->
+    
+    <select id="searchTitleOrContent" resultMap="boardMap">
+    	select * from board 
+    	where title like CONCAT ('%',#{search_value},'%') 
+    	or
+    	content like CONCAT ('%',#{search_value},'%') order by idx desc
+    </select>
+    
+    <select id="searchWriterOrContent" resultMap="boardMap">
+    	select * from board 
+    	where writer like CONCAT ('%',#{search_value},'%') 
+    	or
+    	content like CONCAT ('%',#{search_value},'%') order by idx desc
+    </select>
+    
+    <select id="selectDuplicateId" resultMap="joinMemberMap">
+    	select id from member where id = #{id}
+    </select>
+    
+    <select id="selectMember" resultMap="loginMap">
+    	select * from member where id = #{id} and password = #{password}
+    </select>
+    
+    <insert id ="insert">
+        INSERT INTO board
+        (writer, title, content)
+        VALUES
+        (
+        	#{writer}, #{title}, #{content}
+        )
+    </insert>
+    
+    <insert id="InsertMember">
+	  INSERT INTO member
+      	(id, password, repassword, age, name, email, homepage)
+      VALUES
+      (
+		#{id}, #{password}, #{repassword}, #{age}, #{name}, #{email}, #{homepage}
+      )  	
+    </insert>
+    
+    <update id="update">
+    	update board set
+    		title = #{title},
+    		content = #{content}
+    	where idx = #{idx} 
+    </update>
+    
+    <delete id="delete" >
+    	delete from board where idx = #{idx}
+    </delete>
+
+</mapper>

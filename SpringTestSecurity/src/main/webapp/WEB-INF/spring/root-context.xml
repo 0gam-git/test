@@ -2,10 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-	<bean id="dataSource"
+	<!-- jpa -->
+<!-- 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"></property>
 		<property name="username" value="user"></property>
@@ -22,13 +25,13 @@
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>
-				<prop key="hibernate.default_schema">test</prop>
+				<prop key="hibernate.default_schema">security</prop>
 				<prop key="hibernate.connection.pool_size">4</prop>
 				<prop key="hibernate.connection.shutdown">true</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop> 
-				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
-				<!-- <prop key="hibernate.ddl_auto">auto</prop> -->
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.ddl_auto">auto</prop>
 			</props>
 		</property>
 		
@@ -38,14 +41,32 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
 	</bean>
-	<!-- 스프링 데이터 jpa 리파지토리 쓰려면 등록해야 한다. -->
+	스프링 데이터 jpa 리파지토리 쓰려면 등록해야 한다.
 	<jpa:repositories base-package="com.urong.repository" entity-manager-factory-ref="entityManagerFactory"></jpa:repositories>
-
+ -->
 	<!-- bean -->
 	<bean id="userDao" class="com.urong.daoImpl.UserDaoIml" />
 	<bean id="userService" class="com.urong.serviceImpl.UserServiceImpl" />
 
+	<!-- dataSource -->
 
+ 	<!-- mybatis -->
+<!--	<bean id ="sqlSessionFactory" class= "org.mybatis.spring.SqlSessionFactoryBean" >
+	    <property name = "dataSource" ref= "dataSource"/>
+	    <property name = "configLocation" value = "classpath:/mybatis/mybatis-config.xml" />
+	</bean>
 	
+	<bean id ="transactionManager"
+	    class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+	    <property name = "dataSource" ref = "dataSource"/>
+	</bean>
+	
+	<bean id ="sqlSession" name="sql"
+	    class="org.mybatis.spring.SqlSessionTemplate" >
+	    <constructor-arg ref = "sqlSessionFactory"/>
+	    
+	    <qualifier value="sql"/>
+	</bean >
+	 -->
 	
 </beans>

@@ -14,5 +14,15 @@
 			</h2>
 		</c:if>
 	</sec:authorize>
+	
+	<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+		<H1>ROLE_ADMIN!!!</H1>
+	</sec:authorize>
+	
+	<sec:authorize access="hasAuthority('ROLE_USER')">
+		<h1>ROLE_USER!!!</h1>
+	</sec:authorize>
+	
+	
 </body>
 </html>

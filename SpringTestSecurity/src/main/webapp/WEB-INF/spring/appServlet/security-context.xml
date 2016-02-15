@@ -33,5 +33,10 @@
 	<bean id="userDetailService" class="com.urong.security.TestUserService" />
  -->
 
+	<!-- <sec:http ccess-denied-page="/sec/ram/accessDenied.do" path-type="regex" lowercase-comparisons="false">
+			<security:concurrent-session-control max-sessions="1"
+			exception-if-maximum-exceeded="false" expired-url="/login">
+		</security:concurrent-session-control>
+	</sec:http> -->
 
 </beans>

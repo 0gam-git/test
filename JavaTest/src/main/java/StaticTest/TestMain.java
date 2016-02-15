@@ -13,8 +13,7 @@ public class TestMain {
 		System.out.println(TestStatic.abc);
 		System.out.println(a);
 		
-		TestStatic ts = new TestStatic();
-		String tsStr = ts.abc;
+		String tsStr = TestStatic.abc;
 		
 		System.out.println("==="+tsStr);
 		

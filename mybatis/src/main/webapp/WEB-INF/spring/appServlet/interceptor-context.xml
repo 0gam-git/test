@@ -19,7 +19,6 @@
 			
 			<bean id="interceptor" class="com.urong.mybatis.interceptor.TestInterceptor" />
 		</mvc:interceptor>
-				
 	</mvc:interceptors>
 
 </beans>

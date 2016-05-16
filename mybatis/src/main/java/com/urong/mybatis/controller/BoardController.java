@@ -49,7 +49,7 @@ public class BoardController {
 		viewPageNumber = modFlag ? viewPageNumber : viewPageNumber + 1;
 
 		List<BoardVo> outputs = 
-				sqlSession.selectList("userControlMapper.selectLimitCount", pageNum);
+				sqlSession.selectList("userControlMapper.selectLimitCount2", pageNum);
 
 		mav.addObject("pageCount", viewPageNumber);
 		mav.addObject("viewVo", outputs);
@@ -57,6 +57,7 @@ public class BoardController {
 
 		return mav;
 	}
+	
 
 	@RequestMapping(value = "search.do")
 	private ModelAndView searchTaget(SearchVo svo) {

@@ -67,7 +67,7 @@ public class TestMain {
 		 * UUID.nameUUIDFromBytes(array); System.out.println(
 		 * "nameUUIDFromBytes = " + nameUUIDFromBytes);
 		 */
-
+		
 		String randomUUID = UUID.randomUUID().toString().toUpperCase();
 		System.out.println("randomUUID = " + randomUUID);
 

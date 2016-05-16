@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.BeansException;
@@ -25,28 +27,25 @@ public class FileUploadDownloadController implements ApplicationContextAware {
 
 	@RequestMapping(value = "uploadForm.do")
 	private String uploadForm() {
-
+		
 		return "upload";
 	}
 
-	private ModelAndView upload() {
-		ModelAndView mav = new ModelAndView();
-
-		return mav;
-	}
-
 	@RequestMapping(value = "fileUpload.do")
-	private @ResponseBody String writeFile(MultipartFileModel model) {
+	private @ResponseBody String writeFile(MultipartFileModel model) throws UnsupportedEncodingException {
  
 		MultipartFile multipartfile = model.getFile();
 		OutputStream out = null;
+		
+		String fullFilePath = context.getServletContext().getRealPath("/UpLoad/" + multipartfile.getOriginalFilename());
+		String filePath = "UpLoad/" + multipartfile.getOriginalFilename();
 		try {
 			System.out.println("save path : " + context.getServletContext().getRealPath(""));
 			System.out.println("file upload : " + multipartfile.getName());
 			System.out.println("file upload : " + multipartfile.getOriginalFilename());
 			System.out.println("size : " + multipartfile.getSize());
 			
-			out = new FileOutputStream(context.getServletContext().getRealPath("/UpLoad/" + multipartfile.getOriginalFilename()));
+			out = new FileOutputStream(fullFilePath);
 			BufferedInputStream bis = new BufferedInputStream(multipartfile.getInputStream());
 			byte[] buffer = new byte[4096];
 			int read = 0;
@@ -59,8 +58,10 @@ public class FileUploadDownloadController implements ApplicationContextAware {
 		} finally {
 			IOUtils.closeQuietly(out);
 		}
-
-		return "uploadSuccess";
+		
+		
+		
+		return filePath;
 	}
 
 	@RequestMapping("downolad.do")
@@ -77,4 +78,5 @@ public class FileUploadDownloadController implements ApplicationContextAware {
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.context = (WebApplicationContext) applicationContext;
 	}
+	
 }

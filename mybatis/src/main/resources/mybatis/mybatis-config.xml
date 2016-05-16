@@ -6,5 +6,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
     <mappers>
         <mapper resource ="/mybatis/mapper-sample.xml"/>
+        <mapper resource="/mybatis/mapper-test.xml"/>
+        
+        
     </mappers>
 </configuration>
